@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git gitfast sudo dirhistory last-working-dir common-aliases copyfile history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,7 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(starship init zsh)"
+# Include custom aliases
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+
+export EDITOR='vim'
+
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
 
 
 export NVM_DIR="$HOME/.nvm"

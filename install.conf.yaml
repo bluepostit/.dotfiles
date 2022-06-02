@@ -3,5 +3,6 @@
 - link:
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
+    ~/.aliases: aliases
 
 
