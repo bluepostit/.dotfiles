@@ -1,0 +1,9 @@
+add_newline = false
+
+right_format = """$time"""
+
+[time]
+disabled = false
+
+[sudo]
+disabled = false

@@ -4,5 +4,9 @@
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
     ~/.aliases: aliases
+    ~/.vimrc: vimrc
+    ~/.config/starship.toml: dotconf/config/starship.toml
 
-
+- create:
+    ~/.ssh:
+        mode: 700
