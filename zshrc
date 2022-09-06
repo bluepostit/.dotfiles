@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Include custom aliases
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+[[ -f "$HOME/.zsh-extras" ]] && source "$HOME/.zsh-extras"
 
 export EDITOR='vim'
 
@@ -139,3 +140,41 @@ load-nvmrc
 
 # Enable ZSH syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Finds all remote branches on `origin` (besides main and master).
+# Checks each one out, telling the local branch to track the remote one.
+checkout_all()
+{
+    current_branch=$(git_current_branch);
+    ignores=(origin/main origin/master origin/HEAD);
+    remote=origin;
+
+    git fetch $remote;
+
+    for branch_name in $(git for-each-ref --format="%(refname:short)" refs/remotes/${remote}); do 
+        if [[ ! " ${ignores[*]} " =~ " ${branch_name} " ]]; then
+            git switch --track $branch_name;
+        fi
+    done
+    git checkout $current_branch;
+}
+
+# Pulls all remote branches from `origin`.
+pull_all()
+{
+    current_branch=$(git_current_branch);
+    remote=origin;
+    git fetch $remote;
+
+    for branch_name in $(git for-each-ref --format="%(refname:short)" refs/heads); do 
+        git checkout $branch_name;
+        git pull $remote $(git_current_branch); 
+    done
+    git checkout $current_branch;
+}
+
+# check if an array contains a given value:
+# https://stackoverflow.com/a/15394738
+
+# iterate over branches/refs in a repo:
+# https://stackoverflow.com/a/6300386
