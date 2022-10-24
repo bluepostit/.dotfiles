@@ -1,1 +1,4 @@
 alias zshconfig="vim ~/.zshrc"
+alias xls="exa"
+alias xll="exa -ll"
+alias xla="exa -lha"
