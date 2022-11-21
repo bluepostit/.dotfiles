@@ -1,6 +1,9 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
+    ~/.asdf: asdf
+    ~/.asdfrc: asdfrc
+    ~/.tool-versions: tool-versions
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
     ~/.aliases: aliases
@@ -9,4 +12,12 @@
 
 - create:
     ~/.ssh:
-        mode: 700
+      mode: 700
+
+- shell:
+    - command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      description: Install Node plugin for asdf
+    - command: asdf install nodejs latest
+      description: Install latest version of Node via asdf
+      stdin: true
+      stdout: true
