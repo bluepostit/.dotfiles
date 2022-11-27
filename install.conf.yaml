@@ -4,6 +4,7 @@
     ~/.asdf: asdf
     ~/.asdfrc: asdfrc
     ~/.tool-versions: tool-versions
+    ~/.oh-my-zsh: ohmyzsh
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
     ~/.aliases: aliases
@@ -15,6 +16,10 @@
       mode: 700
 
 - shell:
+    - command: "command -v zsh >/dev/null 2>&1 || { echo >&2 'Installing Zsh'; sudo apt install zsh; }"
+      description: Checking if we need to install Zsh
+    - command: '[ ${SHELL} != "/bin/zsh"  ] && sudo chsh -s $(which zsh)'
+      description: Setting Zsh as the default, if needed
     - command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
       description: Install Node plugin for asdf
     - command: asdf install nodejs latest
