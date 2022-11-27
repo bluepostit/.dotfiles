@@ -18,7 +18,7 @@
 - shell:
     - command: "command -v zsh >/dev/null 2>&1 || { echo >&2 'Installing Zsh'; sudo apt install zsh; }"
       description: Checking if we need to install Zsh
-    - command: '[ ${SHELL} != "/bin/zsh"  ] && sudo chsh -s $(which zsh)'
+    - command: '[ ${SHELL} != "/bin/zsh" ] && chsh -s $(which zsh)'
       description: Setting Zsh as the default, if needed
     - command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
       description: Install Node plugin for asdf
