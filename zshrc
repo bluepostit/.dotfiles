@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitfast sudo dirhistory last-working-dir common-aliases copyfile history-substring-search gh)
+plugins=(git gitfast sudo dirhistory last-working-dir common-aliases copyfile history-substring-search gh zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,9 +118,6 @@ ASDF_DIR=${HOME}/.asdf
 fpath=(${ASDF_DIR}/completions $fpath)
 # Initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-# Enable ZSH syntax highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Finds all remote branches on `origin` (besides main and master).
 # Checks each one out, telling the local branch to track the remote one.
