@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Include custom aliases
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 [[ -f "$HOME/.zsh-extras" ]] && source "$HOME/.zsh-extras"
+[[ -f "$HOME/.fs-syllabus" ]] && source "$HOME/.fs-syllabus"
 
 export EDITOR='vim'
 
@@ -157,42 +158,3 @@ pull_all()
 # iterate over branches/refs in a repo:
 # https://stackoverflow.com/a/6300386
 
-copy_fs_session()
-{
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: Call with only one argument: the name of the session"
-        return 1
-    fi
-
-    SESSION_NAME=$1
-
-    SESSION_DIR=${SYLLABUS_DIR}/sessions/${SESSION_NAME}
-    echo Copying session from directory: ${SESSION_DIR}
-
-    cp -r $SESSION_DIR ./sessions/
-}
-
-copy_fs_challenges()
-{
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: Call with only one argument: the name of the session"
-        return 1
-    fi
-
-    SESSION_NAME=$1
-    EXERCISES_DIR=${WEB_EXERCISES_DIR}/sessions/${SESSION_NAME}
-
-    echo Copying challenges from directory: ${EXERCISES_DIR}
-    cp -r $EXERCISES_DIR ./sessions/${SESSION_NAME}/challenges
-}
-
-copy_full_session()
-{
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: Call with only one argument: the name of the session"
-        return 1
-    fi
-
-    copy_fs_session $1
-    copy_fs_challenges $1
-}
