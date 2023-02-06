@@ -8,7 +8,7 @@
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
     ~/.aliases: aliases
-    ~/.new-syllabus: new-syllabus
+    ~/.fs-syllabus: fs-syllabus
     ~/.vimrc: vimrc
     ~/.config/starship.toml: dotconf/config/starship.toml
 
