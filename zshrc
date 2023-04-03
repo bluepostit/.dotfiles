@@ -152,9 +152,17 @@ pull_all()
     git checkout $current_branch;
 }
 
+git-sweep()
+{
+    git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+}
+
 # check if an array contains a given value:
 # https://stackoverflow.com/a/15394738
 
 # iterate over branches/refs in a repo:
 # https://stackoverflow.com/a/6300386
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

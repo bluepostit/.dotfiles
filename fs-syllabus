@@ -1,3 +1,47 @@
+#!/usr/bin/env bash
+
+# Utility functions for a coach's daily workflow
+#
+# This script defines three functions which help a lot with some of the
+# most tedious actions involved in teaching or preparing for an encounter/
+# activity.
+#
+# - copy_fs_session <name of session> will copy all of the session's files
+#   to the right location in the repo of the cohort which you are in.
+#
+# - copy_fs_challenges <name of session> will copy all of the demos and
+#   challenges to the right location in the repo of the cohort which you are
+#   in.
+#
+# - copy_full_session <name of session> will call both of the functions above.
+#
+# A. PREPARATION
+# 1. Copy this file to your `~` directory, naming it `.daily-workflow`.
+#    It should now be located at `~/.daily-workflow.sh`
+# 2. Open your shell configuration script with a text editor. This file
+#    will be `~/.bashrc` if you're using bash, or `~/.zshrc` if you're using
+#    zsh.
+# 3. Add a line at the end of your shell configuration script as follows:
+#        source $HOME/.daily-workflow.sh
+#    This will load the daily workflow script into every new terminal
+#    window that you open.
+# 4. You will need to have cloned both the `fs-new-syllabus` and the
+#    `fs-web-exercises` repositories locally. Note their paths for the next
+#    step.
+# 5. You will also need to set two variables (simplest is to do this in the
+#    same file you used in step 1 above), as follows:
+#        SYLLABUS_DIR=<PATH OF THE fs-new-syllabus DIRECTORY>
+#        WEB_EXERCISES_DIR=<PATH OF THE fs-web-exercises DIRECTORY>
+# 6. Restart your terminal sessions
+#
+# B. Usage
+# 1. Change directory to the ROOT of the repo you're working on
+# 2. Call the functions you need. For example:
+#   $ copy_full_session js-unit-testing
+# 3. Examine the output for errors. Common issues could include not
+#    following the preparation instructions carefully.
+#
+
 copy_fs_session()
 {
     if [ "$#" -ne 1 ]; then
@@ -11,8 +55,10 @@ copy_fs_session()
     echo Copying session from directory: ${SESSION_DIR}
     cp -r $SESSION_DIR ./sessions/
 
-    echo Adding .gitignore for README.md
-    echo "README.md" >> ./sessions/${SESSION_NAME}/.gitignore    
+    echo Adding .gitignore for README.md, review.md and quiz.md
+    echo "README.md" >> ./sessions/${SESSION_NAME}/.gitignore
+    echo "review.md" >> ./sessions/${SESSION_NAME}/.gitignore   
+    echo "quiz.md" >> ./sessions/${SESSION_NAME}/.gitignore    
 }
 
 copy_fs_challenges()
