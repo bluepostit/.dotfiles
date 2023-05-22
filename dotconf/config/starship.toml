@@ -1,6 +1,7 @@
 # add_newline = false
 
 right_format = """$time"""
+command_timeout = 1000
 
 [aws]
 symbol = "  "
